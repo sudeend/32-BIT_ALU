@@ -30,9 +30,27 @@ A Blank Document opens up into which the following source code can be typed.
 #### a)	To verify the Functionality using the Test Bench
 
 ## Source Code – Using Case Statement :
-
-(Include program here)
-
+```
+`module alu_32bit_case(y,a,b,f);
+input [31:0]a;
+input [31:0]b;
+input [2:0]f;
+output reg [31:0]y;
+always@(*)
+begin
+case(f)
+3'b000:y=a&b; //AND Operation
+3'b001:y=a|b; //OR Operation
+3'b010:y=~(a&b); //NAND Operation
+3'b011:y=~(a|b); //NOR Operation
+3'b100:y=a^b; //XOR Operation
+3'b101:y=~(a^b); //XNOR Operation
+3'b110:y=~a; //NOT of a
+3'b111:y=~b; //NOT of b
+endcase
+end
+endmodule
+```
 Use the Save option or Ctrl+S to save the code, or click on the save option from the top-right corner and close the text file.
 
 ## Creating a Test Bench:
@@ -40,9 +58,29 @@ Use the Save option or Ctrl+S to save the code, or click on the save option from
 Similarly, create your test bench using gedit <filename_tb>.v to open a new blank document (alu_32bit_tb_case).
 
 ## Test Bench :
-
-(Include test bench program here)
-
+```
+`module alu_32bit_tb_case;
+reg [31:0]a;
+reg [31:0]b;
+reg [2:0]f;
+wire [31:0]y;
+alu_32bit_case dut(.y(y),.a(a),.b(b),.f(f));
+initial
+begin
+a=32'h00000000;
+b=32'h10101010;
+#10 f=3'b000;
+#10 f=3'b001;
+#10 f=3'b010;
+#10 f=3'b011;
+#10 f=3'b100;
+#10 f=3'b101;
+#10 f=3'b110;
+#10 f=3'b111;
+#100 $finish;
+end
+endmodule
+```
 Use the Save option or Ctrl+S to save the code, or click on the save option from the top-right corner and close the text file.
 
 ## Functional Simulation:
@@ -56,6 +94,8 @@ source /cadence/install/cshrc (mention the path of the tools)
 (The path of cshrc could vary depending on the installation destination)
 
 After this, you can see the window like below
+![WhatsApp Image 2025-10-18 at 08 53 41_a25b68b1](https://github.com/user-attachments/assets/55c107e9-6802-4932-88ad-1a753ff964a9)
+
 
 #### Fig 2: Invoke the Cadence Environment
 
@@ -68,6 +108,8 @@ or
 •linux:/> nclaunch& // On subsequent calls to NCVERILOG
 
 It will invoke the nclaunch window for functional simulation. We can compile, elaborate and simulate it using Multiple Steps.
+![WhatsApp Image 2025-10-18 at 08 53 42_2443bd1d](https://github.com/user-attachments/assets/b8ce0f3e-3b46-450d-8c4f-ba4205e3aafc)
+
 
 #### Fig 3: Setting Multi-step simulation
 
@@ -142,6 +184,7 @@ Outputs: Elaborate database updated in the mapped library if successful, generat
 5.It also establishes net connectivity and prepares all of this for simulation
 
 After elaboration, the file will come under snapshot. Select the test bench and simulate it.
+![WhatsApp Image 2025-10-18 at 08 53 41_97e34128](https://github.com/user-attachments/assets/3b304454-cbef-43c4-a27f-0e93a1f813b3)
 
 #### Fig 8: Elaboration Launch Option
 
@@ -157,6 +200,8 @@ Simulations allow dumping design and test bench signals into a waveform
 Steps for simulation – Run the simulation command with simulator options
 
 #### Fig 9: Design Browser window for simulation
+![WhatsApp Image 2025-10-18 at 08 53 43_ab8cdf7a](https://github.com/user-attachments/assets/05f8fb94-b30a-4c6f-9053-29c88e5501f9)
+
 
 #### Fig 10: Simulation Waveform Window
 
@@ -174,12 +219,18 @@ The Liberty files are present in the library path,
 • The tool used for Synthesis is “Genus”. Hence, type “genus -gui” to open the tool.
 
 • Genus Script file with .tcl file Extension commands are executed one by one to synthesize the netlist. Or use source run.tcl command in the terminal window to view the netlist, and a log file will be created in the working folder.
+![WhatsApp Image 2025-10-18 at 08 53 41_8d4f7126](https://github.com/user-attachments/assets/376887fd-8f39-4041-9046-fb4140e66ec0)
+
 
 #### Fig 11: Synthesis RTL Schematic 
 
 #### Fig 12: Area report
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/cd4f1c73-1c7d-4401-8fee-e52ce7dddf0a" />
+
 
 #### Fig 13: Power Report
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/b6feceb9-6253-48ea-9c48-b746de1e92b0" />
+
 
 ## Result
 The functionality of the 32-bit ALU was successfully verified using a test bench and simulated with the nclaunch tool. Additionally, the generic netlist of the 32-bit ALU was generated, and the corresponding area and power reports were analyzed and tabulated using Cadence Genus.
