@@ -31,7 +31,7 @@ A Blank Document opens up into which the following source code can be typed.
 
 ## Source Code – Using Case Statement :
 ```
-`module alu_32bit_case(y,a,b,f);
+module alu_32bit_case(y,a,b,f);
 input [31:0]a;
 input [31:0]b;
 input [2:0]f;
@@ -59,7 +59,7 @@ Similarly, create your test bench using gedit <filename_tb>.v to open a new blan
 
 ## Test Bench :
 ```
-`module alu_32bit_tb_case;
+module alu_32bit_tb_case;
 reg [31:0]a;
 reg [31:0]b;
 reg [2:0]f;
@@ -94,7 +94,7 @@ source /cadence/install/cshrc (mention the path of the tools)
 (The path of cshrc could vary depending on the installation destination)
 
 After this, you can see the window like below
-![WhatsApp Image 2025-10-18 at 08 53 41_a25b68b1](https://github.com/user-attachments/assets/55c107e9-6802-4932-88ad-1a753ff964a9)
+
 
 
 #### Fig 2: Invoke the Cadence Environment
@@ -108,7 +108,8 @@ or
 •linux:/> nclaunch& // On subsequent calls to NCVERILOG
 
 It will invoke the nclaunch window for functional simulation. We can compile, elaborate and simulate it using Multiple Steps.
-![WhatsApp Image 2025-10-18 at 08 53 42_2443bd1d](https://github.com/user-attachments/assets/b8ce0f3e-3b46-450d-8c4f-ba4205e3aafc)
+<img width="1920" height="1080" alt="Screenshot (49)" src="https://github.com/user-attachments/assets/7002ab40-90de-4ba5-a62c-f9feb6617409" />
+
 
 
 #### Fig 3: Setting Multi-step simulation
@@ -116,6 +117,8 @@ It will invoke the nclaunch window for functional simulation. We can compile, el
 Select Multiple Step and then select “Create cds.lib File” as shown in the figure below
 
 Click the .cds.lib file and save the file by clicking on the Save option
+<img width="1920" height="1080" alt="Screenshot (51)" src="https://github.com/user-attachments/assets/28c49fd7-d37c-440d-8bdb-b57267ffc85c" />
+
 
 #### Fig 4:cds.lib file Creation
 Save .lib file and select the correct option for cds.lib file format based on the HDL Language and Libraries used.
@@ -125,6 +128,8 @@ Select “Don’t include any libraries (verilog design)” from “New cds.lib 
 We are simulating a verilog design without using any libraries
 
 Click “OK” in the “nclaunch: Open Design Directory” window, as shown in the figure below
+<img width="1920" height="1080" alt="Screenshot (53)" src="https://github.com/user-attachments/assets/0237ee7b-a6f8-4ceb-b4be-061da04466de" />
+
  
 #### Fig 5: Selection of Don’t include any libraries
 An ‘NCLaunch window’ appears as shown in the figure below
@@ -134,6 +139,8 @@ Left side, you can see the HDL files. The right side of the window has Worklib a
 Worklib is the directory where all the compiled codes are stored, while Snapshot will have the output of elaboration, which in turn goes for simulation.
 
 To perform the function simulation, the following three steps are involved: Compilation, Elaboration and Simulation.
+<img width="1920" height="1080" alt="Screenshot (54)" src="https://github.com/user-attachments/assets/0b7b3302-b3c1-4aa8-a5e3-4bb99c8c36b2" />
+
 
 #### Fig 6: Nclaunch Window
 
@@ -198,6 +205,7 @@ Outputs: Simulation log file, waveforms for debugging
 Simulations allow dumping design and test bench signals into a waveform
 
 Steps for simulation – Run the simulation command with simulator options
+
 
 #### Fig 9: Design Browser window for simulation
 ![WhatsApp Image 2025-10-18 at 08 53 43_ab8cdf7a](https://github.com/user-attachments/assets/05f8fb94-b30a-4c6f-9053-29c88e5501f9)
